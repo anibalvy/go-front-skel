@@ -1,0 +1,55 @@
+package index
+
+import (
+	"go-front-skel-001/components/common"
+	"go-front-skel-001/components/auth"
+)
+
+
+
+templ Index(name string) {
+    <!DOCTYPE html>
+    <html lang="en" class="">
+
+      @common.Header("header")
+
+      <body class={"font-['Lato']", Body(), "bg-gray-400", "dark:bg-gray-900","text-black", "dark:text-gray-400"}>
+
+        @common.Nav()
+
+          <!-- side nav -->
+          @common.SideNav()
+
+          <div class="flex-auto flex">
+            <!-- Left Pane -->
+            <div class="hidden relative lg:flex items-center justify-center flex-1">
+              <div class="max-w-md text-center">
+                <br/>
+                <p class="font-bold text-4xl">
+                  Welcome to Mystery Application.
+                </p>
+              </div>
+            </div>
+            <!-- Right Pane -->
+            <div class="relative bg-gray-400 dark:bg-gray-900 w-full lg:w-1/2 flex flex-col items-center justify-center">
+
+              @auth.Login()
+
+              <div class="text-2xl font-semibold ">
+                <br/>
+                Or
+                <br/>
+              </div>
+
+              @auth.Register()
+
+            </div>
+
+          </div>
+
+      </body>
+
+      @common.Footer("footer")
+
+    </html>
+}

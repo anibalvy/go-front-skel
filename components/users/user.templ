@@ -1,0 +1,37 @@
+package users
+
+import (
+	"go-front-skel-001/components/common"
+	"go-front-skel-001/components/index"
+)
+
+
+
+templ User(name string) {
+    <!DOCTYPE html>
+    <html lang="en" class="">
+
+      @common.Header("header")
+
+      <body class={"font-['Lato']", index.Body(), "bg-gray-400", "dark:bg-gray-900","text-black", "dark:text-gray-400"}>
+
+        @common.Nav()
+
+          <!-- side nav -->
+          @common.SideNav()
+
+          <div class="flex-auto flex">
+            <!-- Left Pane -->
+            <p> users { name } </p>
+            <p> users { name } </p>
+            <p> users { name } </p>
+            <p> users { name } </p>
+
+          </div>
+
+      </body>
+
+      @common.Footer("footer")
+
+    </html>
+}

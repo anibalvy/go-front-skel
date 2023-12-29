@@ -1,0 +1,43 @@
+@config "../tailwind.config.js";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary-custom {
+    @apply py-2 px-4 bg-[#1da1f2] text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  }
+}
+  .chat-notification {
+    display: flex;
+    max-width: 24rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  .chat-notification-logo-wrapper {
+    flex-shrink: 0;
+  }
+  .chat-notification-logo {
+    height: 3rem;
+    width: 3rem;
+  }
+  .chat-notification-content {
+    margin-left: 1.5rem;
+    padding-top: 0.25rem;
+  }
+  .chat-notification-title {
+    color: #1a202c;
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+  .chat-notification-message {
+    color: #718096;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+

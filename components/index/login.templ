@@ -1,0 +1,27 @@
+package index
+
+import (
+	"go-front-skel-001/components/common"
+	"go-front-skel-001/components/auth"
+)
+
+
+
+templ Login() {
+    <!DOCTYPE html>
+    <html lang="en" class="">
+
+      @common.Header("header")
+
+      <body class={"font-['Lato']", Body(), "bg-gray-400", "dark:bg-gray-900","text-black", "dark:text-gray-400"}>
+        @common.Nav()
+
+          <div class="relative flex">
+            <div class="relative w-full flex flex-col items-center justify-center h-screen">
+              @auth.Login()
+            </div>
+          </div>
+      </body>
+      @common.Footer("footer")
+    </html>
+}
