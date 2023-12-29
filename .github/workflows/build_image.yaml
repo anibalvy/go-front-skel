@@ -1,0 +1,81 @@
+name: Create and publish Docker Image
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+      - qa
+  workflow_dispatch:
+    # branches:
+    #   - dev
+    #   - main
+    #   - qa
+
+jobs:
+  cancel_previuous_workflows:
+    environment:
+      name: ${{ github.ref_name }}
+    # name: cancel old builds
+    runs-on: ubuntu-22.04
+    steps:
+      -
+        name: Cancel Previous Builds # prevent redundant builds
+        uses: styfle/cancel-workflow-action@0.12.0
+        with:
+          access_token: ${{ github.token }}
+
+  # test:
+  #   environment:
+  #     name: ${{ github.ref_name }}
+  #   name: test app
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     -
+  #       name: checkout
+  #       uses: actions/checkout@v4.1.1
+  #       with:
+  #         fetch-depth: 0
+  #       #   repository: ${{ github.repository }}
+
+  build:
+    environment:
+      name: ${{ github.ref_name }}
+    name: build and push image
+    needs: [cancel_previuous_workflows]  #  really, cancel isn not need to be a requirement
+    runs-on: ubuntu-22.04
+    steps:
+      -
+        name: checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+        #   repository: ${{ github.repository }}
+      -
+        name: make image tag using Docker meta
+        id: meta
+        uses: docker/metadata-action@v5.0.0
+        with:
+          images: ${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=semver,prefix={{branch}}-,pattern={{major}}.{{minor}},value=v1.0.0
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      -
+        name: build and push
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true  # ${{ github.event_name != 'pull_request' }}
+          # tags: ${{ github.repository }}:${{ github.ref_name}}
+          # tags: ${{ secrets.DOCKER_HUB_USERNAME}}/${{  }}:${{ github.ref_name}}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
