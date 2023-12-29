@@ -30,6 +30,7 @@ tmp
 .env
 
 # mockup
+mockup
 mockup/node_modules
 mockup/dist
 package-lock.json
