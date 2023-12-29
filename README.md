@@ -6,6 +6,8 @@ Skeleton to develop front End applications.
 # Stack
 - go
 - Templ
+- Htmx
+- taildwindcss
 - PostgreSQL
 
 ## Getting Started
