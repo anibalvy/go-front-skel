@@ -36,7 +36,7 @@ func Index(name string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 = []any{"font-['Lato']", Body(), "bg-gray-400", "dark:bg-gray-900", "text-black", "dark:text-gray-400"}
+		var templ_7745c5c3_Var2 = []any{Body(), "bg-gray-400", "dark:bg-gray-900", "text-black", "dark:text-gray-400"}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -87,7 +87,7 @@ func Index(name string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Var5 := `Welcome to Mystery Application.`
+		templ_7745c5c3_Var5 := `Welcome to Mystery Applicationxyz.`
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

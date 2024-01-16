@@ -34,3 +34,4 @@ mockup
 mockup/node_modules
 mockup/dist
 package-lock.json
+node_modules

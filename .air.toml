@@ -1,12 +1,13 @@
 root = "."
-testdata_dir = "testdata"
+# testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
   args_bin = []
   bin = "./tmp/main"
   # cmd = "go build -o ./tmp/main ."
-  cmd = "templ generate && go run ."
+  pre_cmd = ["templ generate"]
+  cmd = "go build -o ./tmp/main ."
   delay = 1000 # ms
   exclude_dir = ["componets", "assets", "tmp", "vendor", "testdata"]
   exclude_file = []
@@ -19,10 +20,10 @@ tmp_dir = "tmp"
   include_file = []
   kill_delay = "0s"
   log = "build-errors.log"
-  poll = false
-  poll_interval = 0
-  rerun = false
-  rerun_delay = 500
+  # poll = false
+  # poll_interval = 0
+  # rerun = false
+  # rerun_delay = 100
   send_interrupt = false
   stop_on_error = true
 

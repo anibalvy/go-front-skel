@@ -21,6 +21,9 @@ run:
 	@templ generate
 	@go run .
 
+hotreload:
+	@templ generate --watch --proxy="http://localhost:3030" --cmd="runtest"
+
 # dev the application
 dev:
 	air
